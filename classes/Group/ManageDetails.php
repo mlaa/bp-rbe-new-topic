@@ -169,6 +169,18 @@ EOD;
 	 * @since 0.2
 	 */
 	public function content() {
+		/**
+		 * Filter to disable admin edit of the group email address.
+		 *
+		 * @since 0.1
+		 *
+		 * @param  bool $retval Defaults to false.
+		 * @return bool
+		 */
+		$disable = apply_filters( 'bp_rbe_disable_admin_edit_group_email_address', false );
+		if ( false !== $disable ) {
+			return;
+		}
 		$prefix = Get::mailbox_prefix();
 		$mailbox_class = ! empty( $prefix ) ? ' class="mailbox-with-prefix"' : '';
 
